@@ -1,0 +1,17 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="space-between stretch">
+  <div fxLayout="row">
+    <div *ngFor="let album of albums" (click)="toggle(album)">
+      <img [src]="album.images[1].url" />
+    </div>
+  </div>
+  <div *ngIf="!!albumDetail">
+    <p>{{albumLength(albumDetail)}}</p>
+    <p>{{previewUrl(albumDetail)}}</p>
+
+    <!--<div *ngFor="let track of albumDetail.tracks.items">
+      <span>{{track.name}}</span>
+      <a [href]="track.preview_url">Preview</a>
+      <span>{{trackLength(track)}}</span>
+    </div>-->
+  </div>
+</div>

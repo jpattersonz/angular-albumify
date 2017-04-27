@@ -1,3 +1,22 @@
-<h1>
-  {{title}}
-</h1>
+<div fxFlexFill fxLayout="column" fxLayoutAlign="space-between stretch">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <img src="./assets/music.png" />
+      <h1 color="primary">
+        {{title}}
+      </h1>
+    </div>
+    <div></div>
+    <button md-button (click)="back()" [routerLink]="['../']"><img src="./assets/back arrow.png" />back to search</button>
+  </div>
+  <router-outlet style="display: none;"></router-outlet>
+  <div fxLayout="row" fxLayoutAlign="space-between center" style="visibility: hidden;">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <img src="./assets/music.png" />
+      <h1 color="primary">
+        {{title}}
+      </h1>
+    </div>
+    <button md-button><img src="./assets/back arrow.png" />back to search</button>
+  </div>
+</div>
