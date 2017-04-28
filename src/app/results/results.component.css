@@ -1,0 +1,16 @@
+.hide {
+    display: none;
+}
+
+.carouselnav {
+    background-color: transparent;
+}
+
+.carouselnav img {
+    width: 100%;
+    height: 100%;
+}
+
+h3 {
+    color: white;
+}

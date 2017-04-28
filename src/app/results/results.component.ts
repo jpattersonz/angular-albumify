@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { SpotifyService } from '../spotify.service'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-results',
@@ -11,9 +12,10 @@ export class ResultsComponent implements OnInit {
   @Input()
   query: string;
 
-  albums: SpotifyApi.AlbumObjectSimplified[] = null;
-  selected: SpotifyApi.AlbumObjectSimplified = null;
-  albumDetail: SpotifyApi.AlbumObjectFull = null;
+  albums: SpotifyApi.AlbumObjectSimplified[] = [];
+  index = 0;
+  showing = 3; // TODO: responsive design, switch to 1
+  visible: SpotifyApi.AlbumObjectSimplified[] = [];
 
   constructor(private route: ActivatedRoute, private spotify: SpotifyService) {
   }
@@ -22,36 +24,22 @@ export class ResultsComponent implements OnInit {
     this.route.params.subscribe(p => {
       this.query = p["query"];
       this.spotify.search(this.query).subscribe(x => {
-        this.albums = x.albums.items;
+        while(this.albums.length > 0) this.albums.pop();
+        this.albums.push(...x.albums.items);
+        this.index = 0;
+        this.fix();
       });
     });
   }
 
-  toggle = (album: SpotifyApi.AlbumObjectSimplified) => {
-    if (album === this.selected) {
-      this.selected = null;
-      this.albumDetail = null;
-    } else {
-      this.selected = album;
-      this.spotify.getAlbum(album.id).subscribe(x => this.albumDetail = x);
-    }
+  move = (step: number) => {
+    this.index += step;
+    this.fix();
   }
 
-  albumLength = (albumDetail: SpotifyApi.AlbumObjectFull) =>
-    this.timeString(albumDetail.tracks.items.reduce((sum, x) => sum + x.duration_ms, 0));
-
-  trackLength = (track: SpotifyApi.TrackObjectSimplified) =>
-    this.timeString(track.duration_ms);
-
-  timeString = (ms: number) => {
-    const minutes = Math.round((ms/(1000 * 60)) % 60);
-    const hours = Math.round((ms/(1000 * 60 * 60)) % 24);
-    return hours <= 0 ? "" : (hours + " hour" + (hours > 1 ? "s": "")+ ", ") + minutes + " minute" + (minutes > 1 ? "s": "");
+  fix = () => {
+    while(this.visible.length > 0) this.visible.pop();
+    Observable.from(this.albums).skip(this.index).take(this.showing).subscribe(x => this.visible.push(x));
   }
 
-  previewUrl = (albumDetail: SpotifyApi.AlbumObjectFull) => {
-    const length = albumDetail.tracks.items.length;
-    const index = Math.round(Math.random() * length) || 1;
-    return albumDetail.tracks.items[index].preview_url;
-  }
 }

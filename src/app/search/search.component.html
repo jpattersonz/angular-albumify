@@ -1,15 +1,19 @@
   <div fxLayout="row" fxLayoutAlign="center center">
     <div fxLayout="column" fxLayoutAlign="center center">
       <h1>Search for your favorite music and have fun!</h1>
-      <h3>Enter an artist below and click search to discover great information about your favorite music.</h3>
-      <div fxLayout="row" fxLayoutAlign="center center" color="primary">
-        <md-input-container>
+      <p>Enter an artist below and click search to discover great information about your favorite music.</p>
+      <div fxLayout="row" fxLayoutAlign="center center" class="search-container light-grey">
+        <div fxLayout="row" fxLayoutAlign="center center" class="search whiteish">
+          <img src="../../assets/search icon.png" />
+          <md-input-container>
             <input #searchInput mdInput placeholder="Ex. nickelback, odesza, kid rock" value="">
-        </md-input-container>
-        <div>
-          <button md-raised-button class="search" [routerLink]="['/results', searchInput.value]">  <!--(click)="search(searchInput.value)">-->
-            SEARCH
-          </button>
+          </md-input-container>
+          <!--<input class="mat-input-element" #searchInput placeholder="Ex. nickelback, odesza, kid rock" value="">-->
+          <div>
+            <button md-raised-button class="search-button grey2" [routerLink]="['/results', searchInput.value]">
+              SEARCH
+            </button>
+          </div>
         </div>
       </div>
     </div>

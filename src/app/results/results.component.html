@@ -1,17 +1,22 @@
 <div fxFlexFill fxLayout="column" fxLayoutAlign="space-between stretch">
-  <div fxLayout="row">
-    <div *ngFor="let album of albums" (click)="toggle(album)">
-      <img [src]="album.images[1].url" />
-    </div>
+  <div fxFlex="30">
+    <h3>Click on an item to view more details.</h3>
   </div>
-  <div *ngIf="!!albumDetail">
-    <p>{{albumLength(albumDetail)}}</p>
-    <p>{{previewUrl(albumDetail)}}</p>
-
-    <!--<div *ngFor="let track of albumDetail.tracks.items">
-      <span>{{track.name}}</span>
-      <a [href]="track.preview_url">Preview</a>
-      <span>{{trackLength(track)}}</span>
-    </div>-->
+  <div fxFlex="35" fxLayout="row" style="overflow: hidden; position: relative;">
+    <div fxLayout="row">
+      <div *ngFor="let album of visible" [routerLink]="['/album', album.id]" style="margin:10px;">
+        <img [src]="album.images[0].url" />
+      </div>
+    </div>
+    <div style="position:absolute; left: 2%; height:100%;" fxLayout="row" fxLayoutAlign="center center">
+      <button md-fab color="primary" (click)="move(-1)" class="carouselnav" [ngClass]="{ hide: index == 0 }">
+        <img src="../../assets/carousel left.png" />
+      </button>
+    </div>
+    <div style="position:absolute; right: 2%; height:100%;" fxLayout="row" fxLayoutAlign="center center">
+      <button md-fab color="primary" (click)="move(1)" class="carouselnav" [ngClass]="{ hide: index + showing >= albums.length }">
+        <img src="../../assets/carousel right.png" />
+      </button>
+    </div>
   </div>
 </div>

@@ -1,3 +1,18 @@
-<p>
-  album works!
-</p>
+<div fxFlex fxLayout="row" fxLayoutAlign="space-around start">
+    <div fxFlex fxLayout="column" fxLayoutAlign="start center">
+      <img [src]="album?.images[0]?.url" />
+    </div>
+    <div fxFlex fxLayout="column">
+      <md-card>
+        <md-card-title>{{album?.name}} - {{albumArtists(album)}}</md-card-title>
+        <md-card-subtitle>{{albumLength(album)}}</md-card-subtitle>
+        <md-list>
+          <md-list-item *ngFor="let track of tracks" (click)="play(track)" style="cursor: pointer">
+            <md-icon md-list-icon>play_arrow</md-icon>
+            <h4 md-line>{{track.name}}</h4>
+            <p md-line>{{trackLength(track)}}</p>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </div>
+  </div>

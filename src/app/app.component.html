@@ -1,21 +1,26 @@
 <div fxFlexFill fxLayout="column" fxLayoutAlign="space-between stretch">
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <div fxLayout="row" fxLayoutAlign="start center">
-      <img src="./assets/music.png" />
-      <h1 color="primary">
-        {{title}}
-      </h1>
+  <div class="title" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start">
+    <div fxLayout="row" fxLayoutAlign="start stretch">
+      <div fxLayout="column" fxLayoutAlign="start start">
+        <img src="./assets/music.png" />
+      </div>
+      <div fxLayout="column" fxLayoutAlign="start end">
+        <h1 color="primary">{{title}}</h1>
+      </div>
     </div>
     <div></div>
-    <button md-button (click)="back()" [routerLink]="['../']"><img src="./assets/back arrow.png" />back to search</button>
+    <div>
+      <button md-button (click)="back()" [routerLink]="['../']">
+        <img src="./assets/back arrow.png" style="margin-bottom: 5px;"/>
+        <span>back to search</span>
+      </button>
+    </div>
   </div>
   <router-outlet style="display: none;"></router-outlet>
   <div fxLayout="row" fxLayoutAlign="space-between center" style="visibility: hidden;">
     <div fxLayout="row" fxLayoutAlign="start center">
       <img src="./assets/music.png" />
-      <h1 color="primary">
-        {{title}}
-      </h1>
+      <h1 color="primary">{{title}}</h1>
     </div>
     <button md-button><img src="./assets/back arrow.png" />back to search</button>
   </div>

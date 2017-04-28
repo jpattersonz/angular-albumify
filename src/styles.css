@@ -11,7 +11,6 @@ body {
     background-image: url('assets/background.png');
     background-repeat: no-repeat;
     background-size: cover;
-    color: white;
     height: 100%;
 }
 /*
@@ -28,3 +27,46 @@ body:after {
     background-color: black;
     pointer-events: none;
 }*/
+
+.grey1 {
+    color: #6a7073;
+}
+.grey2 {
+    color: #6a7073;
+}
+.dark-green {
+    color: #536a30
+}
+.light-green {
+    color: #a2c75c
+}
+.bright-green {
+    color: #a7cf5e
+}
+.light-grey {
+    background-color: #d6d6d6
+}
+.blackish {
+    color: #050606
+}
+.whiteish {
+    background-color: #f6f6f6
+}
+.dark-green {
+    color: #536a30
+}
+
+h1 {
+    margin: 10px;
+}
+.mat-button, .mat-fab, .mat-icon-button, .mat-mini-fab, .mat-raised-button, .mat-card,
+.mat-list .mat-list-item .mat-list-item-content, .mat-nav-list .mat-list-item .mat-list-item-content {
+    font-family: 'Comic Neue', sans-serif !important;
+    /*font-weight: 400;
+    font-size: 1em;
+    line-height: 1.5;*/
+    /* Enable a font's kerning: http://stackoverflow.com/questions/15160897/font-feature-settings-what-is-the-correct-syntax */
+    font-feature-settings: "kern";
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}

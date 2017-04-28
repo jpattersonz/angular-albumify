@@ -15,11 +15,7 @@ import { ResultsComponent } from './results/results.component';
 
 const appRoutes: Routes = [
   { path: 'album/:id', component: AlbumComponent },
-  {
-    path: 'results/:query',
-    component: ResultsComponent,
-    data: { title: 'Search Results' }
-  },
+  { path: 'results/:query', component: ResultsComponent, data: { title: 'Search Results' } },
   { path: '', component: SearchComponent, },
   { path: '**', component: AppComponent }
 ];

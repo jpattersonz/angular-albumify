@@ -1,3 +1,37 @@
-button.search {
-    background-image: url('../../assets/search button.png')
+.search-container {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.search {
+    padding: 10px;
+    box-shadow: 1px 1px 3px 0px rgba(5, 6, 6, 0.1);
+    border-radius: 10px;
+}
+.search input {
+    width: 400px;
+}
+
+.search-button {
+    background-color: transparent;
+    background-image: url('../../assets/search button.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mat-button, .mat-icon-button, .mat-raised-button {
+    color: #6a7073 !important;
+}
+
+.mat-input-wrapper {
+    margin: 5px !important;
+    padding-bottom: 0px !important;
+}
+
+p {
+    font-weight: lighter;
+    margin-bottom: 80px;
+}
+
+h1, p {
+    color: white;
 }
