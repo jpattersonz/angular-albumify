@@ -1,11 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
+import { routerTransition } from '../app.animations'
 import { SpotifyService } from '../spotify.service'
 
 @Component({
   selector: 'app-album',
   templateUrl: './album.component.html',
-  styleUrls: ['./album.component.css']
+  styleUrls: ['./album.component.css'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ""},
 })
 export class AlbumComponent implements OnInit {
   @Input()
@@ -13,6 +16,7 @@ export class AlbumComponent implements OnInit {
   album: SpotifyApi.AlbumObjectFull = null;
   tracks: SpotifyApi.TrackObjectSimplified[] = [];
   audio: HTMLAudioElement = new Audio();
+  playing: SpotifyApi.TrackObjectSimplified;
 
   constructor(private route: ActivatedRoute, private spotify: SpotifyService) { }
 
@@ -29,17 +33,19 @@ export class AlbumComponent implements OnInit {
 
   play = (track: SpotifyApi.TrackObjectSimplified) => {
     this.audio.pause();
-    if (this.audio.src != track.preview_url) {
+    if (this.playing != track) {
       this.audio.src = track.preview_url;
       this.audio.play();
+      this.playing = track;
     } else {
       this.audio.src = '';
+      this.playing = null;
     }
   }
 
   albumArtists = () =>
     !this.album ? '' : this.album.artists.map(a => a.name).join(", ");
-    
+
   albumLength = () =>
     this.timeString(this.tracks.reduce((sum, x) => sum + x.duration_ms, 0));
 

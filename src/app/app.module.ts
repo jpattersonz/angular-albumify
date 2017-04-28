@@ -28,7 +28,7 @@ const appRoutes: Routes = [
     ResultsComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { useHash: true }),
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,

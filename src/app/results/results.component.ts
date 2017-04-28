@@ -1,12 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { SpotifyService } from '../spotify.service'
 import { Observable } from 'rxjs'
+import { routerTransition } from '../app.animations'
+import { SpotifyService } from '../spotify.service'
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css']
+  styleUrls: ['./results.component.css'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ""},
 })
 export class ResultsComponent implements OnInit {
   @Input()

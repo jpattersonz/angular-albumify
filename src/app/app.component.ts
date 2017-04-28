@@ -17,4 +17,6 @@ export class AppComponent {
     console.log("router", this.router);
   }
 
+  routeUrl = () => this.router.routerState.snapshot.url;
+
 }

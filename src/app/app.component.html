@@ -8,15 +8,16 @@
         <h1 color="primary">{{title}}</h1>
       </div>
     </div>
-    <div></div>
     <div>
-      <button md-button (click)="back()" [routerLink]="['../']">
+      <button md-button (click)="back()" [routerLink]="['../']" [ngClass]="{ hide: routeUrl() == '/' }">
         <img src="./assets/back arrow.png" style="margin-bottom: 5px;"/>
         <span>back to search</span>
       </button>
     </div>
   </div>
-  <router-outlet style="display: none;"></router-outlet>
+  <div fxLayout="column" style="position: relative; overflow: hidden;">
+    <router-outlet style="display: none;"></router-outlet>
+  </div>
   <div fxLayout="row" fxLayoutAlign="space-between center" style="visibility: hidden;">
     <div fxLayout="row" fxLayoutAlign="start center">
       <img src="./assets/music.png" />
