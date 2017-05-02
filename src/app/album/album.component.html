@@ -1,18 +1,18 @@
-<div fxFlex fxLayout="row" fxLayoutAlign="space-around start">
-    <div fxFlex fxHide fxShow.gt-sm fxLayout="column" fxLayoutAlign="start center">
-      <img [src]="album?.images[0]?.url" />
-    </div>
-    <div fxFlex fxLayout="column" style="height: 100%;">
-      <md-card style="height: 100%;">
-        <md-card-title>{{album?.name}} - {{albumArtists(album)}}</md-card-title>
-        <md-card-subtitle>{{albumLength(album)}}</md-card-subtitle>
-        <md-list style="height: 100%; overflow: auto;">
-          <md-list-item *ngFor="let track of tracks" (click)="play(track)" style="cursor: pointer" [ngClass]="{ playing: playing == track }">
-            <md-icon md-list-icon>play_arrow</md-icon>
-            <h4 md-line>{{track.name}}</h4>
-            <p md-line>{{trackLength(track)}}</p>
-          </md-list-item>
-        </md-list>
-      </md-card>
-    </div>
+<div fxLayout="row" fxLayoutAlign="space-around start">
+  <div fxFlex fxHide fxShow.gt-sm fxLayout="column" fxLayoutAlign="start center">
+    <img [src]="album?.images[0]?.url" />
   </div>
+  <div fxFlex fxLayout="column" style="height: 100%;">
+    <md-card style="height: 100%;">
+      <md-card-title>{{album?.name}} - {{albumArtists(album)}}</md-card-title>
+      <md-card-subtitle>{{albumLength(album)}}</md-card-subtitle>
+      <md-list style="height: 100%; overflow: auto;">
+        <md-list-item *ngFor="let track of tracks" (click)="play(track)" style="cursor: pointer" [ngClass]="{ playing: playing == track }">
+          <md-icon md-list-icon>play_arrow</md-icon>
+          <h4 md-line>{{track.name}}</h4>
+          <p md-line>{{trackLength(track)}}</p>
+        </md-list-item>
+      </md-list>
+    </md-card>
+  </div>
+</div>

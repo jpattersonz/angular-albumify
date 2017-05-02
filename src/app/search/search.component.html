@@ -1,5 +1,5 @@
   <div fxLayout="row" fxLayoutAlign="center center">
-    <div fxLayout="column" fxLayoutAlign="center center">
+    <form fxLayout="column" fxLayoutAlign="center center" style="text-align: center;">
       <h1>Search for your favorite music and have fun!</h1>
       <p>Enter an artist below and click search to discover great information about your favorite music.</p>
       <div fxLayout="row" fxLayoutAlign="center center" class="search-container light-grey">
@@ -9,12 +9,15 @@
             <input #searchInput mdInput placeholder="Ex. nickelback, odesza, kid rock" value="">
           </md-input-container>
           <!--<input class="mat-input-element" #searchInput placeholder="Ex. nickelback, odesza, kid rock" value="">-->
-          <div>
-            <button md-raised-button class="search-button grey2" [routerLink]="['/results', searchInput.value]">
+          <div fxHide.lt-sm>
+            <button type="submit" md-raised-button class="search-button grey2" [routerLink]="['/results', searchInput.value]">
               SEARCH
             </button>
           </div>
         </div>
       </div>
-    </div>
+      <button type="submit" fxHide.gt-sm md-raised-button class="search-button grey2" [routerLink]="['/results', searchInput.value]">
+        SEARCH
+      </button>
+    </form>
   </div>

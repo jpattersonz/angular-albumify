@@ -45,4 +45,9 @@ export class ResultsComponent implements OnInit {
     Observable.from(this.albums).skip(this.index).take(this.showing).subscribe(x => this.visible.push(x));
   }
 
+  fetch = (show: number) => {
+    //return Observable.from(this.albums).skip(this.index).take(show).subscribe(x => this.visible.push(x));
+    return this.albums.slice(this.index, this.index + show);
+  }
+
 }

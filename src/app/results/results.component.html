@@ -4,8 +4,11 @@
   </div>
   <div fxFlex="35" fxLayout="row" style="overflow: hidden; position: relative;">
     <div fxLayout="row">
-      <div *ngFor="let album of visible" [routerLink]="['/album', album.id]" style="margin:10px;">
+      <div fxHide.lt-sm *ngFor="let album of fetch(3)" [routerLink]="['/album', album.id]" style="margin:10px;">
         <img [src]="album.images[0].url" />
+      </div>
+      <div fxLayout="row" fxHide.gt-sm *ngFor="let album of fetch(1)" [routerLink]="['/album', album.id]" style="margin:10px;">
+        <img [src]="album.images[0].url" style="width: 100%; height: 100%;" />
       </div>
     </div>
     <div style="position:absolute; left: 2%; height:100%;" fxLayout="row" fxLayoutAlign="center center">
